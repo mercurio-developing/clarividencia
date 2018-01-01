@@ -20,9 +20,14 @@ app.use(function (req, res, next) {
 var smtpTransport = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
+    port: 465,
     auth: {
         user: "mercuriodevelop@gmail.com",
         pass: "ladeterminacioneslallave"
+    },
+    tls: {
+        // do not fail on invalid certs
+        rejectUnauthorized: false
     }
 });
 // config files
