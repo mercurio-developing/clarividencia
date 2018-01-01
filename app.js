@@ -53,6 +53,10 @@ app.use(express.static(__dirname + '/dist'));
 
 /*------------------Routing Started ------------------------*/
 
+app.get('*',(req, res) => {
+    res.sendFile(path.join(__dirname, '/dist/index.html'));
+})
+
 app.post('/sendmail', function (req, res) {
     console.log(req.body)
     var mailOptions = {

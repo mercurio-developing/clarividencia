@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ContactService } from './contact.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -10,16 +11,13 @@ import { ContactService } from './contact.service';
 })
 export class ContactComponent implements OnInit {
   
-  name:string = '';
-  email: string = '';
-  message: string = '';
+
   submitted;
 
   constructor(private contactService:ContactService) {}
 
   onSubmit(dataEmail) {
     this.submitted = true;
-    console.log(dataEmail)
     this.contactService.sendEmail(dataEmail)
   }
 

@@ -2,15 +2,15 @@
       <form #contact="ngForm" (ngSubmit)="onSubmit(contact.value)">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" class="form-control" required (ngModel)="model.name" name="name" placeholder="Enter Name" #name="ngModel">
+          <input type="text" class="form-control" required (ngModel)="name" name="name" placeholder="Enter Name" #name="ngModel">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="text" class="form-control" required (ngModel)="model.email" name="email" placeholder="Enter Email" #email="ngModel">
+          <input type="text" class="form-control" required (ngModel)="email" name="email" placeholder="Enter Email" #email="ngModel">
         </div>
         <div class="form-group">
           <label>Comment</label>
-          <textarea class="form-control" required (ngModel)="model.message" rows="5" name="message"></textarea>
+          <textarea class="form-control" required (ngModel)="message" rows="5" name="message"></textarea>
         </div>
         <button type="submit" [disabled]="!contact.form.valid"  class="btn float-right">Submit</button>
       </form>
