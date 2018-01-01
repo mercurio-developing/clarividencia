@@ -8,7 +8,7 @@ export class ContactService {
 
   sendEmail(dataEmail) {
     console.log(dataEmail)
-        this.http.post('http://localhost:3000/sendmail', dataEmail).subscribe((data) => {
+        this.http.post('https://localhost:3000/sendmail', dataEmail).subscribe((data) => {
           console.log(data)
             console.log('the email is sended')
         })
