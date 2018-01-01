@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+
+
+.container{
+    background-color:rgb(255, 255, 255,1);    
+}
+
+h2,p{
+    font-family:Raleway;    
+}
+
+h2{
+    opacity: 0.8    
+}
+

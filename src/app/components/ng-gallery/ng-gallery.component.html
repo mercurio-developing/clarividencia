@@ -1,0 +1,29 @@
+<div class="row h-25 ml-4">
+  <div class="col-12">
+    <a class="btn pl-2" (click)="all()" [class.my-active]="other === 4"><p >All</p></a>
+    <a class="btn pl-2" (click)="change(0)"  [class.my-active]="other === 0"><p >Naturaleza</p></a>
+    <a class="btn pl-2" (click)="change(1)" [class.my-active]="other === 1"><p >Retratos</p></a>
+    <a class="btn pl-2" (click)="change(2)"  [class.my-active]="other === 2"><p >Herencia Ancestral</p></a>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <img *ngFor="let photo of photos" class="w-50 h-30 p-1" (click)="openSlide($event)" [src]="photo" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid above p-4 " *ngIf="enableView">
+  <button class="btn btn-exit" (click)="enableView = false">X</button>
+  <div class="row">
+    <div class="col-1">
+      <button class="btn-left btn float-left" (click)="moveToLeft()"> < </button>
+    </div>
+    <div class="col-10"><img [src]="selectedPhoto" alt=""></div>
+    <div class="col-1">
+      <button class="btn-right btn float-right " (click)="moveToRight()"> > </button>
+    </div>
+  </div>
+</div>
