@@ -7,14 +7,12 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-// app.use(function (req, res, next) {
-
-//     header('Access-Control-Allow-Origin: *');
-//     header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-//     header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
-
-//     next();
-// });
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, token, authorization');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    next();
+})
 
 // configuration ===========================================
 var smtpTransport = nodemailer.createTransport({
