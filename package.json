@@ -9,9 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod --aot=false --build-optimizer=false",
-    "start": "node app.js",
-    "deploy": "git push origin master && git push heroku master"
+    "postinstall": "ng build --prod",
+    "start": "node app.js"
   },
   "engines": {
     "node": "~6.11.0",
