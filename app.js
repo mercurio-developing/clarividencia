@@ -7,14 +7,14 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-app.use(function (req, res, next) {
+// app.use(function (req, res, next) {
 
-    header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-    header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+//     header('Access-Control-Allow-Origin: *');
+//     header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+//     header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
-    next();
-});
+//     next();
+// });
 
 // configuration ===========================================
 var smtpTransport = nodemailer.createTransport({
