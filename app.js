@@ -71,13 +71,13 @@ app.post('/sendmail', function (req, res) {
         text: req.body.message
     }
     console.log(mailOptions);
-    smtpTransport.sendMail(mailOptions, function (error, response) {
+    smtpTransport.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
-            res.end("error");
+            res.json({ yo: 'error' });
         } else {
-            console.log("Message sent: " + response);
-            res.end("sent");
+            console.log('Message sent: ' + info.response);
+            res.json({ yo: info.response });
         }
     });
     res.send(req.body)
