@@ -86,3 +86,19 @@ app.post('/sendmail', function (req, res) {
 app.listen(port, function () {
     console.log("Express Started on Port 3000");
 });
+
+
+const forceSSL = function () {
+    return function (req, res, next) {
+        if (req.headers['x-forwarded-proto'] !== 'https') {
+            return res.redirect(
+                ['https://', req.get('Host'), req.url].join('')
+            );
+        }
+        next();
+    }
+}
+// Instruct the app
+// to use the forceSSL
+// middleware
+app.use(forceSSL());
