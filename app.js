@@ -5,25 +5,21 @@ var express = require('express');
 var nodemailer = require("nodemailer");
 var bodyParser = require('body-parser');
 var path = require('path')
-
+var forceSsl = require('force-ssl-heroku');
+var cors = require('cors')
 
 var app = express();
+app.use(forceSsl);
+app.use(cors())
 
 
-app.use(function (req, res, next) {
-    if (req.headers['x-forwarded-proto'] === 'https') {
-        res.redirect('http://' + req.hostname + req.url);
-    } else {
-        next();
-    }
-});
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-    next();
-});
+// app.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", '*');
+//     res.header("Access-Control-Allow-Credentials", true);
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+//     next();
+// });
 
 // configuration ===========================================
 var smtpTransport = nodemailer.createTransport({
