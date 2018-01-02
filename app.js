@@ -80,7 +80,7 @@ app.post('/sendmail', function (req, res) {
             res.end("sent");
         }
     });
-    res.send(req.body)
+    res.send('gato')
 });
 
 /*--------------------Routing Over----------------------------*/
