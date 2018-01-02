@@ -4,48 +4,42 @@
 var express = require('express');
 var nodemailer = require("nodemailer");
 var bodyParser = require('body-parser');
-const path = require('path');
-
+var path = require('path')
 
 var app = express();
 
+// const forceSSL = function () {
+//     return function (req, res, next) {
+//         if (req.headers['x-forwarded-proto'] !== 'https') {
+//             return res.redirect(
+//                 ['https://', req.get('Host'), req.url].join('')
+//             );
+//         }
+//         next();
+//     }
+// }
+// // Instruct the app
+// // to use the forceSSL
+// // middleware
+// app.use(forceSSL());
+
 app.use(function (req, res, next) {
-    var schema = req.headers['x-forwarded-proto'];
-    console.log(req.headers)
-
-    if (schema === 'https') {
-        // Already https; don't do anything special.
-        next();
-    }
-    else {
-        // Redirect to https.
-        res.redirect('https://' + req.headers.host + req.url);
-    }
+    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+    next();
 });
-// Instruct the app
-// to use the forceSSL
-// middleware
-
-// app.use(function (req, res, next) {
-//     res.header("Access-Control-Allow-Origin", '*');
-//     res.header("Access-Control-Allow-Credentials", true);
-//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-//     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-//     next();
-// });
 
 // configuration ===========================================
 var smtpTransport = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
     port: 465,
+    secure:true,
     auth: {
         user: "mercuriodevelop@gmail.com",
         pass: "ladeterminacioneslallave"
-    },
-    tls: {
-        // do not fail on invalid certs
-        rejectUnauthorized: false
     }
 });
 // config files
