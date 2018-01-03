@@ -62,17 +62,19 @@ app.use(express.static(__dirname + '/dist'));
 
 /*------------------Routing Started ------------------------*/
 
-app.get('*',(req, res) => {
-    res.sendFile(path.join(__dirname, '/dist/index.html'));
-})
+// app.get('*',(req, res) => {
+//     res.sendFile(path.join(__dirname, '/dist/index.html'));
+// })
 
 app.post('/sendmail', function (req, res) {
     console.log(req.body)
     
     var mailOptions = {
-        to: req.body.email,
+        from: 'mercuriodevelop@gmail.com',
         subject: req.body.name,
-        text: req.body.message
+        text: 'Hello ' + req.body.email ,
+        html: "<p>" + req.body.message + " </p>",
+        to: req.body.email,
     }
 
     smtpTransport.sendMail(mailOptions, function (error, info) {
