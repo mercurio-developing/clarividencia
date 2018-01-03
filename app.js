@@ -70,11 +70,10 @@ app.post('/sendmail', function (req, res) {
     console.log(req.body)
     
     var mailOptions = {
-        from: 'mercuriodevelop@gmail.com',
+        from: req.body.email,
         subject: req.body.name,
-        text: 'Hello ' + req.body.email ,
-        html: "<p>" + req.body.message + " </p>",
-        to: req.body.email,
+        text: req.body.message,
+        to: 'mercuriodevelop@gmail.com',
     }
 
     smtpTransport.sendMail(mailOptions, function (error, info) {
