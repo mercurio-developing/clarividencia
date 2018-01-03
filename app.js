@@ -26,7 +26,7 @@ var smtpTransport = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
     port: 465,
-    secure:true,
+    secure:false,
     auth: {
         user: "mercuriodevelop@gmail.com",
         pass: "ladeterminacioneslallave"
@@ -66,12 +66,13 @@ app.get('*',(req, res) => {
 
 app.post('/sendmail', function (req, res) {
     console.log(req.body)
+    
     var mailOptions = {
         to: req.body.email,
         subject: req.body.name,
         text: req.body.message
     }
-    console.log(mailOptions);
+
     smtpTransport.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
@@ -81,6 +82,7 @@ app.post('/sendmail', function (req, res) {
             res.json({ yo: info.response });
         }
     });
+
     res.send(req.body)
 });
 
