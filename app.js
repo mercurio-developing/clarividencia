@@ -62,18 +62,13 @@ app.use(express.static(__dirname + '/dist'));
 
 /*------------------Routing Started ------------------------*/
 
-// app.get('*',(req, res) => {
-//     res.sendFile(path.join(__dirname, '/dist/index.html'));
-// })
-
 app.post('/sendmail', function (req, res) {
     console.log(req.body)
     
     var mailOptions = {
-        from: ''+ req.body.name +' <'+ req.body.email +'>', // sender address
+        from: ''+ req.body.name +'<'+ req.body.email +'>', // sender address
         subject: 'Contacto desde CLARIVIDENCIA FOTOGRAFIA', // Subject line
-        html: '<b>'+req.body.message+' from '+req.body.email+'</b>', // html body
-        text: req.body.message,
+        html: '<p>'+req.body.name+'</p></br><p><b>'+req.body.message+' from '+req.body.email+'</b></p>', // html body
         to: 'mercuriodevelop@gmail.com'
     }
 
