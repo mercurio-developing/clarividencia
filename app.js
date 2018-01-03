@@ -75,7 +75,7 @@ app.post('/sendmail', function (req, res) {
         text: req.body.message, // plaintext body
         html: '<b>Hello world ?</b>', // html body
         text: req.body.message,
-        to: 'mercuriodevelop@gmail.com',
+        to: 'mercuriodevelop@gmail.com'
     }
 
     smtpTransport.sendMail(mailOptions, function (error, info) {
