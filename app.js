@@ -75,12 +75,14 @@ app.post('/sendmail', function (req, res) {
 
     smtpTransport.sendMail(mailOptions, function (error, info) {
         if (error) {
-            console.log(error);
-            res.json({ yo: 'error' });
+            emailMessage = "there was an error :-(, and it was this: " + error.message;
         } else {
-            console.log('Message sent: ' + info.response);
-            res.json({ yo: info.response });
+            emailMessage = "Message sent: " + info.response;
         }
+        return res.json({
+            message: "success",
+            email: emailMessage
+        });
     });
 
     res.send(req.body)
