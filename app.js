@@ -84,8 +84,6 @@ app.post('/sendmail', function (req, res) {
             email: emailMessage
         });
     });
-
-    res.send(req.body)
 });
 
 /*--------------------Routing Over----------------------------*/
