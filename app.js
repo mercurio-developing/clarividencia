@@ -72,8 +72,7 @@ app.post('/sendmail', function (req, res) {
     var mailOptions = {
         from: ''+ req.body.name +' <'+ req.body.email +'>', // sender address
         subject: 'Contacto desde CLARIVIDENCIA FOTOGRAFIA', // Subject line
-        text: req.body.message, // plaintext body
-        html: '<b>Hello world ?</b>', // html body
+        html: '<b>'+req.body.message+' from '+req.body.email+'</b>', // html body
         text: req.body.message,
         to: 'mercuriodevelop@gmail.com'
     }
