@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy,Inject } from '@angular/core';
 import { GalleryService } from './ng-gallery.service';
+import { Observable } from 'rxjs';
+import { DOCUMENT } from '@angular/platform-browser';
+import { ISubscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-ng-gallery',
@@ -8,7 +11,7 @@ import { GalleryService } from './ng-gallery.service';
   providers: [GalleryService]
 
 })
-export class NgGalleryComponent implements OnInit {
+export class NgGalleryComponent implements OnInit,OnDestroy {
   
   photos:any[]
   selectedPhoto: string
@@ -17,9 +20,28 @@ export class NgGalleryComponent implements OnInit {
   status:boolean = false;
   wasClicked:boolean = false
   other:number;
+  width: number = document.documentElement.clientWidth;
 
-  constructor(private galleryService:GalleryService) {
-   }
+  private subscription: ISubscription;
+
+  constructor(private galleryService:GalleryService,@Inject(DOCUMENT) private docu) {
+    
+    const $resizeEvent = Observable.fromEvent(window, 'resize')
+
+    .map(() => {
+      let x = document.documentElement.clientWidth;
+      return x
+    })
+
+  this.subscription = $resizeEvent.subscribe(data => {
+    this.width = data
+    console.log(this.width)
+    if(this.width <= 768){
+      this.enableView = false;
+    }
+  }); 
+  
+  }
 
   ngOnInit() {
     this.enableView = false;
@@ -65,6 +87,10 @@ export class NgGalleryComponent implements OnInit {
         }
       }
     }
+  }
+
+  ngOnDestroy() { 
+    this.subscription.unsubscribe();
   }
 
 }

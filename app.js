@@ -13,22 +13,14 @@ app.use(forceSsl);
 app.use(cors())
 
 
-// app.use(function (req, res, next) {
-//     res.header("Access-Control-Allow-Origin", '*');
-//     res.header("Access-Control-Allow-Credentials", true);
-//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-//     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-//     next();
-// });
-
 // configuration ===========================================
 var smtpTransport = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
     port: 465,
     auth: {
-        user: "mercuriodevelop@gmail.com",
-        pass: "ladeterminacioneslallave"
+        user: "clarividenciafotografia@gmail.com        ",
+        pass: "yuraqrumi"
     },tls: {
         // do not fail on invalid certs
         rejectUnauthorized: false
@@ -63,13 +55,14 @@ app.use(express.static(__dirname + '/dist'));
 /*------------------Routing Started ------------------------*/
 
 app.post('/sendmail', function (req, res) {
+    
     console.log(req.body)
     
     var mailOptions = {
-        from: ''+ req.body.name +'<'+ req.body.email +'>', // sender address
-        subject: 'Contacto desde CLARIVIDENCIA FOTOGRAFIA', // Subject line
-        html: '<p>'+req.body.name+'</p></br><p><b>'+req.body.message+' from '+req.body.email+'</b></p>', // html body
-        to: 'mercuriodevelop@gmail.com'
+        from: req.body.email, 
+        subject: 'CLARIVIDENCIA contact', 
+        html: '<h1>CLARIVIDENCIA CONTACT</h1></br><div><p><b>MESSAGE:</br></b>'+req.body.message+' </div><div><b>Nombre de cliente:</b> '+req.body.name +'</p></div><div><p><b>Email:</b> '+req.body.email +'</p></div>', // html body
+        to: 'clarividenciafotografia@gmail.com'
     }
 
     smtpTransport.sendMail(mailOptions, function (error, info) {

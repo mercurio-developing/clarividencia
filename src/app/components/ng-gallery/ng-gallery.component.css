@@ -27,27 +27,23 @@ a,p{
 }
 
 .above img{
-    width: 100%;
-    height: 95%;
+    height: 100%;
 }
 
 .btn-left{
-    position: fixed;
+    position: absolute;
         top: 50%;
         left:3%;
-    opacity: 0.3
 }
 
 .btn-right{
-    position: fixed;
+    position: absolute;
         top: 50%;
         right:3%;   
-        opacity: 0.1
 }
 
 .btn-exit{
     opacity: 0.5;
-    margin-left: 10px;
 }
 
 .btn-left:hover{
@@ -66,3 +62,98 @@ a,p{
     z-index: 0.5
 }
 
+@media (max-width: 576px) {
+    
+    .above img{
+        height: 100%;
+    }
+    
+    .btn-left{
+        position: absolute;
+            top: 50%;
+            left:3%;
+    }
+    
+    .btn-right{
+        position: absolute;
+            top: 50%;
+            right:3%;   
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .above img{
+        height: 100%;
+    }
+    
+    .btn-left{
+        position: fixed;
+            top: 50%;
+            left:3%;
+    }
+    
+    .btn-right{
+        position: fixed;
+            top: 50%;
+            right:3%;   
+    }
+}
+
+@media (max-width: 992px) {
+
+    .above img{
+        height: 100%;
+    }
+
+    
+    .btn-left{
+        position: absolute;
+            top: 30%;
+            left:3%;
+    }
+    
+    .btn-right{
+        position: absolute;
+            top: 30%;
+            right:3%;   
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .above img{
+        height: 100%;
+    }
+
+
+    .btn-left{
+        position: absolute;
+            top: 50%;
+            left:3%;
+    }
+    
+    .btn-right{
+        position: absolute;
+            top: 50%;
+            right:3%;   
+    }
+}
+@media (min-width: 1200px) {
+
+    .above img{
+        height: 87%;
+    }
+
+    .btn-left{
+        position: absolute;
+            top: 40%;
+            left:3%;
+    }
+    
+    .btn-right{
+        position: absolute;
+            top: 40%;
+            right:3%;   
+    }
+}

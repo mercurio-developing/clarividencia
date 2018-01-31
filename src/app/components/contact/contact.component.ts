@@ -18,6 +18,7 @@ export class ContactComponent implements OnInit {
 
   onSubmit(dataEmail) {
     this.submitted = true;
+    console.log(dataEmail)
     this.contactService.sendEmail(dataEmail)
   }
 

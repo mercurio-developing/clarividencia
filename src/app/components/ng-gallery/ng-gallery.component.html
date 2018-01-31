@@ -9,19 +9,19 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12">
-      <img *ngFor="let photo of photos" class="w-50 h-30 p-1" (click)="openSlide($event)" [src]="photo" alt="">
+    <div  *ngFor="let photo of photos" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 p-1">
+      <img  class="img-fluid" (click)="openSlide($event)" [src]="photo" alt="">
     </div>
   </div>
 </div>
 
-<div class="container-fluid above p-4 " *ngIf="enableView">
+<div class="container-fluid above p-4 d-none d-sm-none d-md-inline d-lg-inline d-xl-inline" *ngIf="enableView">
   <button class="btn btn-exit" (click)="enableView = false">X</button>
   <div class="row">
     <div class="col-1">
       <button class="btn-left btn float-left" (click)="moveToLeft()"> < </button>
     </div>
-    <div class="col-10"><img [src]="selectedPhoto" alt=""></div>
+    <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10"><img class="img-fluid w-100" [src]="selectedPhoto" alt=""></div>
     <div class="col-1">
       <button class="btn-right btn float-right " (click)="moveToRight()"> > </button>
     </div>
