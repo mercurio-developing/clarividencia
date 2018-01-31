@@ -14,13 +14,15 @@ import { AboutComponent } from './components/about/about.component';
 import { NgGalleryComponent } from './components/ng-gallery/ng-gallery.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { EmailsuccessComponent } from './components/emailsuccess/emailsuccess.component';
+import { EmailValidatorDirective } from '../shared/emailvalidator.service';
+
 
 //app route
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  {path:'home',component:PortfolioComponent},
-  {path:'about',component:AboutComponent},
-  {path:'contact',component:ContactComponent},
+  { path:'home',component:PortfolioComponent},
+  { path:'about',component:AboutComponent},
+  { path:'contact',component:ContactComponent},
   { path: 'emailsuccess', component: EmailsuccessComponent },
   { path: '404', component: NotfoundComponent },
   { path: '**', redirectTo: '/404' }
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     AboutComponent,
     NgGalleryComponent,
     NotfoundComponent,
-    EmailsuccessComponent
+    EmailsuccessComponent,
+    EmailValidatorDirective,
   ],
   imports: [
     BrowserModule,
@@ -47,4 +50,5 @@ const appRoutes: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
