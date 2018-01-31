@@ -25,7 +25,6 @@ export class EmailValidatorDirective implements Validator {
     this.validator = this.emailValidator();
   }
   validate(c: FormControl) {
-    console.log(this.validator(c))
     return this.validator(c);
   }
 
@@ -33,7 +32,6 @@ export class EmailValidatorDirective implements Validator {
     return (c: FormControl) => {
       let isValid = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/.test(c.value);
       if (isValid) {
-        console.log(isValid)
         return null;
       } else {
         return {          
