@@ -9,9 +9,9 @@ import { Router } from "@angular/router";
 export class NotfoundComponent implements OnInit {
 
   constructor(private router: Router) {
-    setTimeout(()=>{
-      this.router.navigate(['home'])
-    },3000);
+    // setTimeout(()=>{
+    //   this.router.navigate(['home'])
+    // },3000);
  }
 
   ngOnInit() {
