@@ -20,7 +20,7 @@ var smtpTransport = nodemailer.createTransport({
     port: 465,
     auth: {
         user: "clarividenciafotografia@gmail.com        ",
-        pass: "yuraqrumi"
+        pass: ""
     },tls: {
         // do not fail on invalid certs
         rejectUnauthorized: false
